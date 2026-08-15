@@ -1,0 +1,5 @@
+This note is teaching material about process, not patient data.
+
+Rule: genomic files and clinical protocol text stay on local disk.
+The model may be asked to summarize *how* a pipeline is gated.
+The model may not be given VCF records, sample IDs, or identifiable clinical narrative.

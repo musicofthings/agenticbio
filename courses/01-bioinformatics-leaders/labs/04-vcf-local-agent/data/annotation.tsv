@@ -1,0 +1,4 @@
+variant_id	gene_symbol	note
+SYNTH_VAR_1	GENE_A	synthetic annotation; not a real gene assignment
+SYNTH_VAR_2	GENE_B	synthetic annotation; not a real gene assignment
+SYNTH_VAR_3	GENE_A	synthetic annotation; not a real gene assignment

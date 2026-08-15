@@ -1,0 +1,4 @@
+# synthetic run card — not a sample sheet from a sequencer
+cohort=SYNTH-DEMO
+gate=human-review-before-write
+records=3

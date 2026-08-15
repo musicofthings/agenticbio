@@ -1,0 +1,56 @@
+# Local-only overlay (Docker Compose merges this automatically).
+# Publishes host ports and adds Mailpit so signup/invite mail is visible
+# at http://localhost:8025 without a real SMTP provider.
+#
+# Production later: do not copy this file to the server. Use the Cloudflare
+# Tunnel overlay documented in docs/SELF_HOST.md instead.
+
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: cio-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  minio:
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  api:
+    ports:
+      - "3081:3081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      mailpit:
+        condition: service_started
+
+  dashboard:
+    ports:
+      - "3082:3082"
+
+  jobs:
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      mailpit:
+        condition: service_started
