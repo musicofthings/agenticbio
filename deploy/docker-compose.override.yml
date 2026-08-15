@@ -13,6 +13,14 @@ services:
     ports:
       - "8025:8025"
       - "1025:1025"
+    environment:
+      # ClassroomIO/nodemailer issues STARTTLS; Mailpit only implements it with a cert.
+      MP_SMTP_TLS_CERT: /certs/cert.pem
+      MP_SMTP_TLS_KEY: /certs/key.pem
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+    volumes:
+      - ./mailpit-certs:/certs:ro
 
   postgres:
     ports:
@@ -30,6 +38,11 @@ services:
   api:
     ports:
       - "3081:3081"
+    environment:
+      # Trust the local Mailpit self-signed STARTTLS cert (local only).
+      NODE_EXTRA_CA_CERTS: /mailpit-certs/cert.pem
+    volumes:
+      - ./mailpit-certs/cert.pem:/mailpit-certs/cert.pem:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -45,6 +58,10 @@ services:
       - "3082:3082"
 
   jobs:
+    environment:
+      NODE_EXTRA_CA_CERTS: /mailpit-certs/cert.pem
+    volumes:
+      - ./mailpit-certs/cert.pem:/mailpit-certs/cert.pem:ro
     depends_on:
       postgres:
         condition: service_healthy

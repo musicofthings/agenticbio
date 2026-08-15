@@ -45,8 +45,8 @@ curl -I  http://localhost:3082/    # dashboard 200
 
 ## First-admin checklist
 
-1. Open http://localhost:3082 and create the first organization account.
-2. Confirm the verification email in [Mailpit](http://localhost:8025). Without Mailpit/SMTP, signup looks successful but never delivers mail.
+1. Open http://localhost:3082 and create the first organization account (email/password — Google login is optional and off until you add a real `GOOGLE_CLIENT_ID`; see [`../docs/SELF_HOST.md`](../docs/SELF_HOST.md)).
+2. Confirm the verification email in [Mailpit](http://localhost:8025). Local Mailpit needs dummy SMTP auth (`SMTP_USER=mailpit`) and a STARTTLS cert (`./mailpit-certs`, see compose override). Without that, signup looks successful but verification mail never delivers.
 3. Create the course **The Agentic Bio Fellowship — Bioinformatics & Computational Biology** using [`../courses/01-bioinformatics-leaders/COURSE.md`](../courses/01-bioinformatics-leaders/COURSE.md).
 4. Attach each lab `README.md` as a lesson resource.
 

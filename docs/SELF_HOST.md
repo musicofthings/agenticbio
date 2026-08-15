@@ -27,6 +27,7 @@ Schema setup runs inside `cio-api` on start. Do not set `SKIP_DB_SETUP=true` unl
 | Dashboard 502 / “API upstream not configured” | `PRIVATE_SERVER_URL` must be `http://api:3081` |
 | Postgres `57P03` recovery | Wait for healthcheck; api starts only after `SELECT 1` |
 | Image pull fails for `ghcr.io/classroomio/...` | Wrong compose — this repo uses Docker Hub `classroomio/...` |
+| Google **Error 401: invalid_client** | `GOOGLE_CLIENT_ID` is empty or a placeholder (`docker-local-client-id`). Use email/password, or create a real OAuth client (see below). |
 
 Port conflicts:
 
@@ -42,6 +43,30 @@ docker exec cio-postgres pg_dump -U postgres classroomio > backup-$(date +%F).sq
 ```
 
 `docker compose down -v` deletes Postgres, Redis, and MinIO volumes.
+
+### Google login (optional)
+
+The ClassroomIO login page always shows **Login with Google**. That is not configured until you put a real OAuth Web client in `.env`. Placeholder values (`docker-local-client-id`) produce Google **Error 401: invalid_client**.
+
+Until then, use **email and password** (`admin@agenticbio.local` locally).
+
+To enable Google:
+
+1. [Google Cloud Console → APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials) → Create credentials → OAuth client ID → **Web application**.
+2. Authorized JavaScript origins:
+   - `http://localhost:3082`
+   - `https://learn.agenticbio.in` (later)
+3. Authorized redirect URIs (Better Auth, dashboard origin):
+   - `http://localhost:3082/api/auth/callback/google`
+   - `https://learn.agenticbio.in/api/auth/callback/google` (later)
+4. Paste into `deploy/.env`:
+
+```env
+GOOGLE_CLIENT_ID=....apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=....
+```
+
+5. Recreate the API: `cd deploy && docker compose up -d --force-recreate api`
 
 ## Production later (not enabled in this repo)
 
