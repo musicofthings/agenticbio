@@ -1,0 +1,278 @@
+{
+  "course": {
+    "title": "The Agentic Bio Fellowship: Local Agents for Clinical Documentation Hours",
+    "description": "Privacy-first local multi-agent orchestration for clinical documentation workflow. Agents plan; Nextflow executes. Ethics packets stay on campus. 6–8 weeks. Individual ₹1.5L · Team ₹5L.",
+    "type": "LIVE_CLASS",
+    "locale": "en",
+    "metadata": {
+      "description": "<p>A 6–8 week live Fellowship for clinical directors, nurse educators, and radiology/pathology leads. Same technical core as cohort 1. Skin: reclaiming documentation hours — IEC packets and protocol administration, not diagnosis.</p><p>Not a medical device. Not clinical advice. Synthetic teaching documents only.</p>",
+      "requirements": "<ul><li>Owns SOPs or IEC/IRB packets today</li><li>Docker on a machine you control (or documented blocker + offline stub)</li><li>No requirement to send identifiable notes to a public LLM API</li></ul>",
+      "goals": "<ol><li>Run a local LLM with an explicit document boundary</li><li>Ship a Dockerized Python + R image</li><li>Treat Nextflow as the execution plane</li><li>Index a synthetic IEC packet locally, with human review before any filing</li><li>Stop a document loop at a human gate</li><li>Deliver one autonomous local pipeline on the synthetic packet</li></ol>",
+      "allowNewStudent": true,
+      "grading": true,
+      "isContentGroupingEnabled": true,
+      "progressionMode": "free",
+      "skills": [
+        "Ollama",
+        "Docker",
+        "Nextflow DSL2",
+        "IEC packets",
+        "Local agents",
+        "Data governance"
+      ],
+      "tools": [
+        "Ollama",
+        "Docker",
+        "Nextflow",
+        "Python"
+      ],
+      "instructor": {
+        "name": "Agentic Bio Labs",
+        "role": "Faculty",
+        "description": "The Agentic Bio Fellowship — privacy-first local AI orchestration for life sciences.",
+        "imgUrl": ""
+      }
+    }
+  },
+  "tags": [
+    "Fellowship",
+    "Clinical",
+    "IEC",
+    "Nextflow",
+    "Cohort 3"
+  ],
+  "sections": [
+    {
+      "externalId": "sec-m1",
+      "title": "Week 1 — Local LLM baseline for clinical documents",
+      "order": 0
+    },
+    {
+      "externalId": "sec-m2",
+      "title": "Week 2 — Dockerized analysis environments",
+      "order": 1
+    },
+    {
+      "externalId": "sec-m3",
+      "title": "Week 3 — Nextflow DSL2 as the execution plane",
+      "order": 2
+    },
+    {
+      "externalId": "sec-m4",
+      "title": "Week 4 — Agent loop over packet files",
+      "order": 3
+    },
+    {
+      "externalId": "sec-m5",
+      "title": "Week 5 — IEC packet index on-box",
+      "order": 4
+    },
+    {
+      "externalId": "sec-m6",
+      "title": "Week 6 — Self-correcting document loops",
+      "order": 5
+    },
+    {
+      "externalId": "sec-m7",
+      "title": "Weeks 7–8 — Capstone",
+      "order": 6
+    }
+  ],
+  "lessons": [
+    {
+      "externalId": "les-1-1",
+      "sectionExternalId": "sec-m1",
+      "title": "1.1 — Why cloud APIs fail hospital documentation",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-1-2",
+      "sectionExternalId": "sec-m1",
+      "title": "1.2 — Ollama as the on-box inference plane",
+      "order": 1,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-1-3",
+      "sectionExternalId": "sec-m1",
+      "title": "1.3 — Boundary contract",
+      "order": 2,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-2-1",
+      "sectionExternalId": "sec-m2",
+      "title": "2.1 — One image, two languages",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-3-1",
+      "sectionExternalId": "sec-m3",
+      "title": "3.1 — Agents plan; Nextflow runs",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-4-1",
+      "sectionExternalId": "sec-m4",
+      "title": "4.1 — Tool-using agents vs chat UIs",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-5-1",
+      "sectionExternalId": "sec-m5",
+      "title": "5.1 — A packet is a contract",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-5-2",
+      "sectionExternalId": "sec-m5",
+      "title": "5.2 — Assemble locally",
+      "order": 1,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-6-1",
+      "sectionExternalId": "sec-m6",
+      "title": "6.1 — Fail, patch, re-run",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-7-1",
+      "sectionExternalId": "sec-m7",
+      "title": "Capstone — one autonomous local pipeline",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    }
+  ],
+  "lessonLanguages": [
+    {
+      "lessonExternalId": "les-1-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W1-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W1-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>The failure mode</h3><p>Public model endpoints and identifiable notes, imaging reports, or live IEC packets do not mix. “HIPAA-eligible vendor” is not your DPA. Hospital legal will ask where the text went, who can read the logs, and whether a subprocessor in another country saw a name.</p><h3>What this track is not</h3><p>Not diagnosis, triage, or treatment. Documentation workflow only — ethics-committee packets and protocol administration. We do not teach scribes that write into the EHR.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>This is the first lesson in the course.</p><p>Next: 1.2 — Ollama as the on-box inference plane → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/1-2-ollama-as-the-on-box-inference-plane\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-1-2",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W1-L2</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W1-L2 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Same lab as cohort 1</h3><p>One completion against a non-clinical fixture. Do not paste a real note, imaging report, or consent form into the prompt. The fixture is about process language: how a packet is gated, not what a patient said.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/01-ollama-baseline\">labs/01-ollama-baseline</a>.</p><pre><code>ollama pull llama3.2:1b\n./scripts/run_local_prompt.sh</code></pre><p>If Ollama cannot be installed (corporate laptop, no local daemon), document the blocker and continue with the stub so the rest of the Fellowship is unblocked:</p><pre><code>python3 scripts/offline_stub.py</code></pre><h3>Acceptance</h3><ul><li><code>outputs/completion.txt</code> exists and is derived from <code>fixtures/governance-note.txt</code></li><li>No API keys in the repo or in shell history for this exercise</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.1 — Why cloud APIs fail hospital documentation — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/1-1-why-cloud-apis-fail-hospital-documentation\">public page</a></p><p>Next: 1.3 — Boundary contract → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/1-3-boundary-contract\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-1-3",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W1-L3</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W1-L3 is added ]</em></p><!--/cio-youtube-placeholder--><h3>What may leave</h3><p>Prompts about how a packet is gated: which checklist item is missing, whether the container tag is pinned, who must sign before filing.</p><h3>What must not</h3><ul><li>Names, MRNs, report text</li><li>Real consent forms or live IEC packets</li></ul><p>Assignment: <code>outputs/boundary.md</code> written for clinical documents (process only).</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.2 — Ollama as the on-box inference plane — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/1-2-ollama-as-the-on-box-inference-plane\">public page</a></p><p>Next: 2.1 — One image, two languages → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/2-1-one-image-two-languages\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-2-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W2-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W2-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Pin the image</h3><p>Clinical IT still pins the runtime rather than “it works on the ward PC.” The image is what you would show to infosec when they ask how document assembly is reproduced.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/02-container-r-python\">labs/02-container-r-python</a>.</p><pre><code>docker build -t agenticbio-lab02:local .\ndocker run --rm -v \"$PWD/data:/data\" -v \"$PWD/outputs:/outputs\" agenticbio-lab02:local python /opt/lab/summarize.py\ndocker run --rm -v \"$PWD/data:/data\" -v \"$PWD/outputs:/outputs\" agenticbio-lab02:local Rscript /opt/lab/summarize.R</code></pre><h3>Acceptance</h3><ul><li>Image builds on your machine (amd64 or arm64)</li><li><code>outputs/python_summary.txt</code> and <code>outputs/r_summary.txt</code> exist</li><li>Host <code>python3</code> / <code>R</code> are not required to produce those files</li><li>The Dockerfile pins a digest or a major tag you could defend in an audit</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.3 — Boundary contract — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/1-3-boundary-contract\">public page</a></p><p>Next: 3.1 — Agents plan; Nextflow runs → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/3-1-agents-plan-nextflow-runs\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-3-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W3-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W3-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Audit trail</h3><p>The workflow file is the audit trail for document assembly, not a chat log. If an IEC secretariat later asks which checklist version was indexed, the answer is in Nextflow’s report.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/03-nextflow-execution-plane\">labs/03-nextflow-execution-plane</a>.</p><pre><code>nextflow run main.nf -c nextflow.config</code></pre><p>Or:</p><pre><code>docker run --rm -v \"$PWD\":/work -w /work nextflow/nextflow:24.10.0 nextflow run main.nf</code></pre><h3>Acceptance</h3><ul><li><code>results/summary.txt</code> exists after a clean run</li><li><code>main.nf</code> has at least two processes wired by a channel</li><li>You can explain the audit-trail rule in two sentences</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 2.1 — One image, two languages — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/2-1-one-image-two-languages\">public page</a></p><p>Next: 4.1 — Tool-using agents vs chat UIs → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/4-1-tool-using-agents-vs-chat-uis\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-4-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W4-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W4-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Human gate before filing</h3><p>Map tools to <code>list_dir</code>, <code>read_file</code>, <code>run_nextflow</code>, <code>run_container</code>. Deny network. Never auto-file to an IEC portal, EHR, or PACS.</p><p>The agent may list gaps. It may not invent CVs, insurance text, or signatures. Filing is a human act.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 3.1 — Agents plan; Nextflow runs — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/3-1-agents-plan-nextflow-runs\">public page</a></p><p>Next: 5.1 — A packet is a contract → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/5-1-a-packet-is-a-contract\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-5-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W5-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W5-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>A packet is a contract</h3><p>Checklist + administrative cover. Trial id <code>SYNTH-TRIAL-001</code>. No patients, no dosing, no wet-lab methods. Do not replace fixtures with a real IEC packet.</p><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/03-clinical-healthcare/labs/04-ethics-packet-local-agent\">labs/04-ethics-packet-local-agent</a>.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 4.1 — Tool-using agents vs chat UIs — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/4-1-tool-using-agents-vs-chat-uis\">public page</a></p><p>Next: 5.2 — Assemble locally → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/5-2-assemble-locally\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-5-2",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W5-L2</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W5-L2 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Assemble locally</h3><pre><code>python3 extract_packet.py --checklist data/iec-checklist.md --cover data/synthetic-protocol-admin.md --out outputs/packet-index.md</code></pre><p>The agent may list gaps. It may not invent CVs or insurance text. Cover fields (trial id, title, site) come from the local file — not from the internet.</p><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/03-clinical-healthcare/labs/04-ethics-packet-local-agent\">labs/04-ethics-packet-local-agent</a>.</p><h3>Acceptance</h3><ul><li><code>outputs/packet-index.md</code> lists each checklist item as present or missing</li><li>One paragraph on why a cloud scribe on identifiable notes is out of scope</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 5.1 — A packet is a contract — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/5-1-a-packet-is-a-contract\">public page</a></p><p>Next: 6.1 — Fail, patch, re-run → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/6-1-fail-patch-re-run\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-6-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W6-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W6-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Bounded loop</h3><p>Agent proposes a checklist fix; human approves; container re-runs; max N iterations. Never auto-file to an IEC portal, EHR, or PACS. If the next step would look like a submission, the loop ends.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 5.2 — Assemble locally — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/5-2-assemble-locally\">public page</a></p><p>Next: Capstone — one autonomous local pipeline → <a href=\"/course/agentic-bio-fellowship-clinical/lesson/capstone-one-autonomous-local-pipeline\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-7-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — CLIN-W7-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once CLIN-W7-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Deliverable</h3><p>One local pipeline on the synthetic packet. Ollama (or stub) drafts a run plan; Nextflow executes containerized extract; a human signs the architecture one-pager (reuse the cohort 1 template; swap VCF language for packet).</p><p>Template: <a href=\"https://github.com/musicofthings/agenticbio/blob/main/courses/01-bioinformatics-leaders/capstone-one-pager.md\">capstone-one-pager.md</a>.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 6.1 — Fail, patch, re-run — <a href=\"/course/agentic-bio-fellowship-clinical/lesson/6-1-fail-patch-re-run\">public page</a></p><p>This is the last lesson. Submit the capstone when you are ready.</p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    }
+  ],
+  "exercises": [
+    {
+      "externalId": "ex-lab01",
+      "lessonExternalId": "les-1-3",
+      "sectionExternalId": "sec-m1",
+      "title": "Lab 01 — Boundary contract (clinical documents)",
+      "description": "Upload outputs/boundary.md from the shared Ollama lab, written for clinical documents (process only).",
+      "order": 3,
+      "questions": [
+        {
+          "question": "Upload outputs/boundary.md.",
+          "questionTypeId": 8,
+          "points": 10,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "externalId": "ex-lab04",
+      "lessonExternalId": "les-5-2",
+      "sectionExternalId": "sec-m5",
+      "title": "Lab 04 — Synthetic IEC packet index",
+      "description": "Upload outputs/packet-index.md plus one paragraph on why a cloud scribe on identifiable notes is out of scope.",
+      "order": 2,
+      "questions": [
+        {
+          "question": "Upload outputs/packet-index.md.",
+          "questionTypeId": 8,
+          "points": 10,
+          "order": 0
+        },
+        {
+          "question": "Why is a cloud scribe on identifiable notes out of scope?",
+          "questionTypeId": 3,
+          "points": 10,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "externalId": "ex-capstone",
+      "lessonExternalId": "les-7-1",
+      "sectionExternalId": "sec-m7",
+      "title": "Capstone — architecture one-pager",
+      "description": "Upload a one-page PDF. No sample-level data. Not a medical device.",
+      "order": 1,
+      "questions": [
+        {
+          "question": "Upload the architecture one-pager (PDF preferred).",
+          "questionTypeId": 8,
+          "points": 20,
+          "order": 0
+        }
+      ]
+    }
+  ],
+  "sourceReferences": [
+    {
+      "type": "prompt",
+      "label": "courses/03-clinical-healthcare/COURSE.md"
+    }
+  ],
+  "warnings": []
+}

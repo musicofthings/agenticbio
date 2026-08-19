@@ -137,12 +137,23 @@ Anything that would touch a LIMS, a clinical report, or a production Nextflow `-
 ## Load checklist (admin)
 
 1. Start ClassroomIO ([`../../deploy/README.md`](../../deploy/README.md)).
-2. Create organization **Agentic Bio Labs**.
-3. Create course with the LMS title above; set it to paid/invite as you prefer (checkout is out of band for this MVP).
-4. Create seven modules; paste lesson titles and bodies from this file.
-5. Upload each lab folder as a downloadable resource (or link the git tree once the repo is remote).
-6. Add a “Capstone” assignment: upload the one-pager PDF.
-7. Invite the first fellow; confirm the invite appears in Mailpit (`http://localhost:8025`).
+2. Create organization **Agentic Bio Labs** (already exists on the local volume).
+3. Import this cohort (idempotent — safe to re-run after editing the draft):
+
+   ```bash
+   python3 deploy/scripts/seed_cohort1.py
+   ```
+
+   Source of truth for LMS HTML: [`classroomio-draft.json`](classroomio-draft.json). Lab folders stay in git; lesson bodies link to them on GitHub.
+
+   Re-apply expanded lesson HTML, YouTube placeholders, and prev/next without duplicating lessons:
+
+   ```bash
+   python3 deploy/scripts/enrich_lesson_content.py --write --apply
+   ```
+4. Open the published course at http://localhost:3082 and confirm seven modules. Open a lesson: you should see a YouTube placeholder, teaching copy, and Continue links. Fellows also get Previous / Next in the header; teachers use **View as student**.
+5. After each live session, paste the recording URL in the lesson **Videos** tab (slot ids look like `BIO-W1-L1`). Completion stays manual.
+6. Invite the first fellow; confirm the invite appears in Mailpit (`http://localhost:8025`). Checkout stays out of band for this MVP.
 
 ## Constraints (non-negotiable)
 

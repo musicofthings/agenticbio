@@ -1,97 +1,72 @@
 # Session Handover
-_Generated: 2026-08-15_
-_Branch: (uncommitted MVP)_
-_Trigger: AgenticBio Classroom MVP implementation_
+_Generated: 2026-08-19T09:50:00+05:30_
+_Branch: main_
+_Trigger: user request (lesson content, nav, YouTube placeholders)_
 
 ---
 
-## Active Task
+## 🎯 Active Task
+**What we're building/fixing:**
+Expanded all five Fellowship courses in local ClassroomIO: real lesson bodies, YouTube placeholders, and lesson-to-lesson Continue links. Native Previous/Next in the header only shows for students; teachers use the in-body links or **View as student**.
 
-**What we're building:** Agentic Bio Classroom — local ClassroomIO + Fellowship product docs + cohort 1 labs.
-
-**Phase:** Local MVP files in repo. Stack not necessarily running until `docker compose up` in `deploy/`.
-
-**Next action:** `cd deploy && cp .env.example .env && ./scripts/gen-secrets.sh && docker compose up -d`, then create the first org at http://localhost:3082 and paste cohort 1 from `courses/01-bioinformatics-leaders/COURSE.md`.
-
----
-
-## Completed This Session
-
-- [x] `deploy/` official ClassroomIO 1.0.0 compose (Docker Hub, not ghcr), Mailpit override, `.env.example`, `scripts/gen-secrets.sh`
-- [x] Docs: ARCHITECTURE, SELF_HOST, FELLOWSHIP, LAUNCH, MARKETING, JUSTIFICATION
-- [x] Cohort 1 COURSE.md + labs 01–04 + capstone one-pager template
-- [x] Root README and this handover
+**Phase:** Curriculum content in LMS
+**Next action:** Open a lesson at http://localhost:3082, confirm copy + Continue links, then paste YouTube URLs after live sessions.
 
 ---
 
-## Remaining Work
-
-1. Start the local stack and create the first ClassroomIO admin/org
-2. Paste cohort 1 modules into the LMS; attach lab zips
-3. Production later: add `agenticbio.in` to Cloudflare, Tunnel public hostname `learn.agenticbio.in` → `dashboard:3082`, real SMTP (`noreply@agenticbio.in`), media public URLs on that host
-4. Webinar date + PDF export of `docs/JUSTIFICATION.md`
-5. Checkout (Razorpay etc.) — not started
-6. Cohorts 2–5 curriculum — not started
-7. Backend offers (fractional / DFY / consortium) — copy only, no delivery ops yet
+## ✅ Completed This Session
+- [x] Expanded lesson HTML for all 5 cohorts (14 + 4×10 lessons)
+- [x] YouTube placeholders with slot ids (`BIO-W1-L1`, `DS-W1-L1`, …)
+- [x] Prev/next Continue links (classroom UUID path + public slug path)
+- [x] Set `public=true` and `is_unlocked=true` on every lesson
+- [x] Applied in place via SQL (no duplicate lessons)
+- [x] Seed skips structure PUT when lessons already exist
 
 ---
 
-## Architecture Decisions Made
+## 🔄 In Progress (Exact Resume Point)
+**Branch:** `main`
+**Last commit:** `39549ea Fix local ClassroomIO mail and stop fake Google OAuth.`
+**Next immediate action:** Spot-check cohort 1 lesson 1.1 in the dashboard; add real YouTube URLs later via Videos tab.
 
+---
+
+## 📋 Remaining Work
+1. Paste live-session YouTube URLs into each lesson’s Videos tab after class
+2. Configuration later: Google OAuth, Cloudflare tunnel, SMTP, Razorpay
+3. Market one live cohort at a time (start with 1)
+
+---
+
+## 🏗 Architecture Decisions Made
 | Decision | Rationale | Date |
 |----------|-----------|------|
-| Official Docker Hub `classroomio/{api,dashboard,jobs}:1.0.0` | Pasted ghcr compose and `:3000` ports do not match ClassroomIO; 1.0.0 is the current immutable v1 tag (amd64+arm64) | 2026-08-15 |
-| Single dashboard origin; API stays internal | CIO dashboard proxies API; no `PUBLIC_API_URL` | 2026-08-15 |
-| Mailpit locally; real SMTP in prod | Access OTP is not CIO email and would block new students | 2026-08-15 |
-| Cloudflare Tunnel documented, not enabled | User chose local-first (`localhost:3082`) | 2026-08-15 |
-| Production domain `agenticbio.in` | Bought; LMS will be `learn.agenticbio.in` via Cloudflare Tunnel. No public `api.` hostname. Apex/www reserved for marketing later | 2026-08-15 |
-| Jobs worker required | Video, AI gen, most email never drain without it | 2026-08-15 |
-| Fellowship naming + ₹1.5L / ₹5L | Mid-funnel; not a $1k workshop | 2026-08-15 |
-| Launch cohort 1 only (bioinformatics leaders) | Sequence, do not sync five tracks | 2026-08-15 |
-| Synthetic VCF only in labs | No real patient data in git or teaching uploads | 2026-08-15 |
+| Apply lesson HTML via SQL, not structure PUT | CIO merge keys on lesson UUID; a second import duplicates lessons | 2026-08-19 |
+| YouTube as HTML placeholder, not `videos` jsonb | Empty/fake YouTube links break the player; CSP blocks iframes in lesson HTML | 2026-08-19 |
+| Keep `completionPolicy=manual` | Placeholders must not block Mark complete | 2026-08-19 |
+| In-body Continue links + public=true | Admin/edit view hides CIO’s header prev/next (`isStudentExperience` only) | 2026-08-19 |
 
 ---
 
-## Commands to Resume
-
+## 🔧 Commands to Resume
 ```bash
-cd /Users/theranosis_dx/projects/agenticbio/deploy
-cp -n .env.example .env
-./scripts/gen-secrets.sh
-docker compose up -d
-docker compose ps
-docker compose logs -f api dashboard jobs
+cd ~/projects/agenticbio/deploy && docker compose up -d
+python3 deploy/scripts/enrich_lesson_content.py --write --apply
+# Login: admin@agenticbio.local / LocalTest!2026abc  (do not click Google)
 ```
 
-Dashboard: http://localhost:3082  
-Mailpit: http://localhost:8025  
-MinIO: http://localhost:9001 (`minioadmin` / `minioadmin`)
-
 ---
 
-## Files Modified This Session
-
-| Path | Status |
+## 📁 Files Modified This Session
+| File | Status |
 |------|--------|
-| `README.md` | added |
-| `.gitignore` | added |
-| `deploy/**` | added |
-| `docs/**` | added |
-| `courses/01-bioinformatics-leaders/**` | added |
-| `session_handover.md` | updated |
+| deploy/scripts/enrich_lesson_content.py | added |
+| deploy/scripts/seed_cohort1.py | modified |
+| courses/0{1-5}-*/classroomio-draft.json | modified |
+| courses/01-bioinformatics-leaders/COURSE.md | modified |
+| README.md | modified |
 
 ---
 
-## Critical Rules
-
-- Never commit `.env` or generated auth secrets
-- Do not put Cloudflare Access OTP in front of learner login
-- Do not use `docker compose down -v` unless you intend to wipe the LMS database
-- Labs: synthetic data only; not a medical device
-
----
-
-## Bioinformatics Context
-
-- Teaching reference: GRCh38 placeholder in synthetic VCF header only
-- No real cohorts, no ACMG classification in labs
+## 🌿 Git Context
+Lots of uncommitted curriculum/docs. Do **not** commit `deploy/.env`, `.env.production`, or `mailpit-certs/`. Do **not** `docker compose down -v`. Do **not** re-run `gen-secrets.sh`.

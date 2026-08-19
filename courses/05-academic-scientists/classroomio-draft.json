@@ -1,0 +1,278 @@
+{
+  "course": {
+    "title": "The Agentic Bio Fellowship: Local Literature Synthesis and Grant Architecture",
+    "description": "Privacy-first local synthesis of teaching abstracts into a BioE3-style outline. Agents plan; Nextflow executes. No cloud writer. 6–8 weeks. Individual ₹1.5L · Team ₹5L.",
+    "type": "LIVE_CLASS",
+    "locale": "en",
+    "metadata": {
+      "description": "<p>A 6–8 week live Fellowship for PIs and senior scientists at ICMR, CSIR, and DBT labs. Same technical core as cohort 1. Skin: literature synthesis and grant architecture on a machine you control. Teaching abstracts are invented; we do not copy publisher PDFs.</p><p>The Fellowship does not file grants. Not a medical device.</p>",
+      "requirements": "<ul><li>Already writes grants or literature notes</li><li>Docker on a machine you control (or documented blocker + offline stub)</li><li>No requirement to upload unpublished manuscripts to a cloud writer</li></ul>",
+      "goals": "<ol><li>Run a local LLM with an explicit unpublished-text boundary</li><li>Ship a Dockerized Python + R image</li><li>Treat Nextflow as the execution plane</li><li>Fill a BioE3-style outline from synthetic local abstracts</li><li>Stop an outline loop at a human gate before any portal paste</li><li>Deliver one autonomous local pipeline on the synthetic set</li></ol>",
+      "allowNewStudent": true,
+      "grading": true,
+      "isContentGroupingEnabled": true,
+      "progressionMode": "free",
+      "skills": [
+        "Ollama",
+        "Docker",
+        "Nextflow DSL2",
+        "Grant architecture",
+        "Literature synthesis",
+        "Data governance"
+      ],
+      "tools": [
+        "Ollama",
+        "Docker",
+        "Nextflow",
+        "Python"
+      ],
+      "instructor": {
+        "name": "Agentic Bio Labs",
+        "role": "Faculty",
+        "description": "The Agentic Bio Fellowship — privacy-first local AI orchestration for life sciences.",
+        "imgUrl": ""
+      }
+    }
+  },
+  "tags": [
+    "Fellowship",
+    "Academic",
+    "Grants",
+    "Nextflow",
+    "Cohort 5"
+  ],
+  "sections": [
+    {
+      "externalId": "sec-m1",
+      "title": "Week 1 — Local LLM baseline for unpublished text",
+      "order": 0
+    },
+    {
+      "externalId": "sec-m2",
+      "title": "Week 2 — Dockerized analysis environments",
+      "order": 1
+    },
+    {
+      "externalId": "sec-m3",
+      "title": "Week 3 — Nextflow DSL2 as the execution plane",
+      "order": 2
+    },
+    {
+      "externalId": "sec-m4",
+      "title": "Week 4 — Agent loop over notes",
+      "order": 3
+    },
+    {
+      "externalId": "sec-m5",
+      "title": "Week 5 — Grant outline on-box",
+      "order": 4
+    },
+    {
+      "externalId": "sec-m6",
+      "title": "Week 6 — Self-correcting outline",
+      "order": 5
+    },
+    {
+      "externalId": "sec-m7",
+      "title": "Weeks 7–8 — Capstone",
+      "order": 6
+    }
+  ],
+  "lessons": [
+    {
+      "externalId": "les-1-1",
+      "sectionExternalId": "sec-m1",
+      "title": "1.1 — Why cloud writers fail grant and manuscript drafts",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-1-2",
+      "sectionExternalId": "sec-m1",
+      "title": "1.2 — Ollama as the on-box inference plane",
+      "order": 1,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-1-3",
+      "sectionExternalId": "sec-m1",
+      "title": "1.3 — Boundary contract",
+      "order": 2,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-2-1",
+      "sectionExternalId": "sec-m2",
+      "title": "2.1 — One image, two languages",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-3-1",
+      "sectionExternalId": "sec-m3",
+      "title": "3.1 — Agents plan; Nextflow runs",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-4-1",
+      "sectionExternalId": "sec-m4",
+      "title": "4.1 — Tool-using agents vs chat UIs",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-5-1",
+      "sectionExternalId": "sec-m5",
+      "title": "5.1 — Abstracts as a contract",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-5-2",
+      "sectionExternalId": "sec-m5",
+      "title": "5.2 — Fill locally",
+      "order": 1,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-6-1",
+      "sectionExternalId": "sec-m6",
+      "title": "6.1 — Fail, patch, re-run",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    },
+    {
+      "externalId": "les-7-1",
+      "sectionExternalId": "sec-m7",
+      "title": "Capstone — one autonomous local pipeline",
+      "order": 0,
+      "isUnlocked": true,
+      "public": true
+    }
+  ],
+  "lessonLanguages": [
+    {
+      "lessonExternalId": "les-1-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W1-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W1-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>The failure mode</h3><p>Unpublished text, reviewer comments, and institute reports are not public. A research copilot that ships them off-box is a leak. Grant <em>structure</em> is the product; the agency portal stays a human submit.</p><p>The Fellowship does not file grants. Teaching abstracts are invented; we do not copy publisher PDFs.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>This is the first lesson in the course.</p><p>Next: 1.2 — Ollama as the on-box inference plane → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/1-2-ollama-as-the-on-box-inference-plane\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-1-2",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W1-L2</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W1-L2 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Same lab as cohort 1</h3><p>Prove local inference before you synthesize. Do not paste an unpublished manuscript or a real budget line into the prompt this week.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/01-ollama-baseline\">labs/01-ollama-baseline</a>.</p><pre><code>ollama pull llama3.2:1b\n./scripts/run_local_prompt.sh</code></pre><p>If Ollama cannot be installed (corporate laptop, no local daemon), document the blocker and continue with the stub so the rest of the Fellowship is unblocked:</p><pre><code>python3 scripts/offline_stub.py</code></pre><h3>Acceptance</h3><ul><li><code>outputs/completion.txt</code> exists and is derived from <code>fixtures/governance-note.txt</code></li><li>No API keys in the repo or in shell history for this exercise</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.1 — Why cloud writers fail grant and manuscript drafts — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/1-1-why-cloud-writers-fail-grant-and-manuscript-drafts\">public page</a></p><p>Next: 1.3 — Boundary contract → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/1-3-boundary-contract\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-1-3",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W1-L3</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W1-L3 is added ]</em></p><!--/cio-youtube-placeholder--><h3>What may leave</h3><p>How an outline is gated: which template heading is empty, who must approve a portal paste.</p><h3>What must not</h3><ul><li>Manuscript bodies</li><li>Real budget lines</li><li>Reviewer identities</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.2 — Ollama as the on-box inference plane — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/1-2-ollama-as-the-on-box-inference-plane\">public page</a></p><p>Next: 2.1 — One image, two languages → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/2-1-one-image-two-languages\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-2-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W2-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W2-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Pin the image</h3><p>Synthesis still needs a pinned runtime. The image is how a co-PI reproduces the outline job without your laptop Python.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/02-container-r-python\">labs/02-container-r-python</a>.</p><pre><code>docker build -t agenticbio-lab02:local .\ndocker run --rm -v \"$PWD/data:/data\" -v \"$PWD/outputs:/outputs\" agenticbio-lab02:local python /opt/lab/summarize.py\ndocker run --rm -v \"$PWD/data:/data\" -v \"$PWD/outputs:/outputs\" agenticbio-lab02:local Rscript /opt/lab/summarize.R</code></pre><h3>Acceptance</h3><ul><li>Image builds on your machine (amd64 or arm64)</li><li><code>outputs/python_summary.txt</code> and <code>outputs/r_summary.txt</code> exist</li><li>Host <code>python3</code> / <code>R</code> are not required to produce those files</li><li>The Dockerfile pins a digest or a major tag you could defend in an audit</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 1.3 — Boundary contract — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/1-3-boundary-contract\">public page</a></p><p>Next: 3.1 — Agents plan; Nextflow runs → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/3-1-agents-plan-nextflow-runs\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-3-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W3-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W3-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Audit trail</h3><p>The workflow file records which abstract files were read. Chat is not a submission record. If a funding desk asks which notes fed a section, the answer is a path plus a Nextflow report.</p><h3>What to run</h3><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/01-bioinformatics-leaders/labs/03-nextflow-execution-plane\">labs/03-nextflow-execution-plane</a>.</p><pre><code>nextflow run main.nf -c nextflow.config</code></pre><p>Or:</p><pre><code>docker run --rm -v \"$PWD\":/work -w /work nextflow/nextflow:24.10.0 nextflow run main.nf</code></pre><h3>Acceptance</h3><ul><li><code>results/summary.txt</code> exists after a clean run</li><li><code>main.nf</code> has at least two processes wired by a channel</li><li>You can explain the audit-trail rule in two sentences</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 2.1 — One image, two languages — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/2-1-one-image-two-languages\">public page</a></p><p>Next: 4.1 — Tool-using agents vs chat UIs → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/4-1-tool-using-agents-vs-chat-uis\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-4-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W4-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W4-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Human gate before the portal</h3><p>File in → synthesize → file out → critic. Never auto-submit to an agency portal. Deny network except trusted package mirrors. Paste is a human act, even when the outline looks finished.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 3.1 — Agents plan; Nextflow runs — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/3-1-agents-plan-nextflow-runs\">public page</a></p><p>Next: 5.1 — Abstracts as a contract → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/5-1-abstracts-as-a-contract\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-5-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W5-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W5-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Abstracts as a contract</h3><p><code>SYNTH-ABS-*</code> teaching files. We do not copy publisher PDFs. BioE3 is a section pattern, not a filing service. Do not paste copyrighted paper text into <code>data/abstracts/</code>.</p><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/05-academic-scientists/labs/04-grant-synth-local-agent\">labs/04-grant-synth-local-agent</a>.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 4.1 — Tool-using agents vs chat UIs — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/4-1-tool-using-agents-vs-chat-uis\">public page</a></p><p>Next: 5.2 — Fill locally → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/5-2-fill-locally\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-5-2",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W5-L2</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W5-L2 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Fill locally</h3><pre><code>python3 synthesize.py --abstracts data/abstracts --template data/bioe3-outline.md --out outputs/grant-outline.md</code></pre><p>Each filled bullet must cite a local <code>SYNTH-ABS-*</code> id. No cloud writer.</p><p>Lab folder: <a href=\"https://github.com/musicofthings/agenticbio/tree/main/courses/05-academic-scientists/labs/04-grant-synth-local-agent\">labs/04-grant-synth-local-agent</a>.</p><h3>Acceptance</h3><ul><li><code>outputs/grant-outline.md</code> has every template heading</li><li>Each filled bullet cites a <code>SYNTH-ABS-*</code> id</li><li>One paragraph on why uploading an unpublished manuscript to a cloud writer is out of scope</li></ul><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 5.1 — Abstracts as a contract — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/5-1-abstracts-as-a-contract\">public page</a></p><p>Next: 6.1 — Fail, patch, re-run → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/6-1-fail-patch-re-run\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-6-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W6-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W6-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Bounded loop</h3><p>Agent proposes a section rewrite; human approves; container re-runs. Never auto-submit. If the next step is a portal paste, the loop ends.</p><h3>How the live session runs</h3><p>Ninety minutes on the week’s contract, then the lab is async. Bring a machine you control (or a written blocker plus the offline stub). We will not paste real payloads into a prompt in class.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 5.2 — Fill locally — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/5-2-fill-locally\">public page</a></p><p>Next: Capstone — one autonomous local pipeline → <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/capstone-one-autonomous-local-pipeline\">public page</a></p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    },
+    {
+      "lessonExternalId": "les-7-1",
+      "locale": "en",
+      "content": "<!--cio-youtube-placeholder--><h3>Live session recording</h3><p><strong>YouTube placeholder — GRANT-W7-L1</strong></p><p>The 90-minute live session recording will be embedded here after class. Faculty: open this lesson → <em>Videos</em> → paste the YouTube URL. Do not put a raw iframe in the lesson body (the dashboard Content-Security-Policy blocks YouTube frames). Completion stays <em>manual</em>, so fellows can mark the lesson complete before the recording is up.</p><p><em>[ YouTube player will appear above this text once GRANT-W7-L1 is added ]</em></p><!--/cio-youtube-placeholder--><h3>Deliverable</h3><p>One local pipeline on the synthetic abstracts. Reuse the cohort 1 architecture one-pager; swap VCF language for grant outline. The Fellowship does not file grants.</p><p>Template: <a href=\"https://github.com/musicofthings/agenticbio/blob/main/courses/01-bioinformatics-leaders/capstone-one-pager.md\">capstone-one-pager.md</a>.</p><p><strong>Not a medical device. Not clinical advice.</strong> Labs use synthetic teaching data only.</p><!--cio-lesson-nav--><h3>Continue to the next lesson</h3><p>← Previous: 6.1 — Fail, patch, re-run — <a href=\"/course/agentic-bio-fellowship-academic-grants/lesson/6-1-fail-patch-re-run\">public page</a></p><p>This is the last lesson. Submit the capstone when you are ready.</p><p>Fellows signed in as students also get Previous / Next in the lesson header. Teachers: use <em>View as student</em> in the course header to see that bar, or use the links above.</p><!--/cio-lesson-nav-->"
+    }
+  ],
+  "exercises": [
+    {
+      "externalId": "ex-lab01",
+      "lessonExternalId": "les-1-3",
+      "sectionExternalId": "sec-m1",
+      "title": "Lab 01 — Boundary contract (unpublished text)",
+      "description": "Upload outputs/boundary.md from the shared Ollama lab, written for unpublished manuscripts.",
+      "order": 3,
+      "questions": [
+        {
+          "question": "Upload outputs/boundary.md.",
+          "questionTypeId": 8,
+          "points": 10,
+          "order": 0
+        }
+      ]
+    },
+    {
+      "externalId": "ex-lab04",
+      "lessonExternalId": "les-5-2",
+      "sectionExternalId": "sec-m5",
+      "title": "Lab 04 — Synthetic grant outline",
+      "description": "Upload outputs/grant-outline.md plus one paragraph on why uploading an unpublished manuscript to a cloud writer is out of scope.",
+      "order": 2,
+      "questions": [
+        {
+          "question": "Upload outputs/grant-outline.md.",
+          "questionTypeId": 8,
+          "points": 10,
+          "order": 0
+        },
+        {
+          "question": "Why is uploading an unpublished manuscript to a cloud writer out of scope?",
+          "questionTypeId": 3,
+          "points": 10,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "externalId": "ex-capstone",
+      "lessonExternalId": "les-7-1",
+      "sectionExternalId": "sec-m7",
+      "title": "Capstone — architecture one-pager",
+      "description": "Upload a one-page PDF. No sample-level data. The Fellowship does not file grants.",
+      "order": 1,
+      "questions": [
+        {
+          "question": "Upload the architecture one-pager (PDF preferred).",
+          "questionTypeId": 8,
+          "points": 20,
+          "order": 0
+        }
+      ]
+    }
+  ],
+  "sourceReferences": [
+    {
+      "type": "prompt",
+      "label": "courses/05-academic-scientists/COURSE.md"
+    }
+  ],
+  "warnings": []
+}
