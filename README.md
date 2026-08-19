@@ -69,7 +69,7 @@ python3 deploy/scripts/enrich_lesson_content.py --write --apply
 
 Each lesson has a **YouTube placeholder** (slot id like `BIO-W1-L1`). Paste the real URL in the lesson **Videos** tab after class — do not iframe YouTube in the HTML. Fellows signed in as students get Previous / Next in the header; every lesson body also has Continue links. Teachers: **View as student** in the course header.
 
-Cohort 2–5 outlines (same core labs, different audience skin): see [`docs/FELLOWSHIP.md`](docs/FELLOWSHIP.md). Do not market tracks 2–5 until cohort 1 fills.
+Cohort 2–5 outlines and audience-specific lab 4 folders are in `courses/0{2-5}-*/`. Shared labs 1–3 stay under cohort 1. Do not market tracks 2–5 until cohort 1 fills.
 
 ## Out of scope (this MVP)
 

@@ -78,4 +78,4 @@ Registration opens shortly. DM me “ARCHITECTURE” to secure a spot on the pri
 
 1. Seed engagement by sending the post to existing colleagues as a DM (not as a public tag storm).
 2. Reply to every comment before posting the next piece.
-3. When someone DMs `ARCHITECTURE`, send the webinar date (once set) and the [Manager Justification](JUSTIFICATION.md) outline — not a cold invoice.
+3. When someone DMs `ARCHITECTURE`, send the webinar date (once set) and the [Manager Justification PDF](justification-one-pager.pdf) — not a cold invoice.

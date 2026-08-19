@@ -1,14 +1,29 @@
 #!/usr/bin/env bash
-# Fill empty BETTER_AUTH_SECRET and PRIVATE_SERVER_KEY in deploy/.env.
+# Fill empty BETTER_AUTH_SECRET and PRIVATE_SERVER_KEY in an env file.
 # Existing non-empty values are never overwritten.
+#
+#   ./scripts/gen-secrets.sh                 # deploy/.env
+#   ./scripts/gen-secrets.sh .env.production
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ENV_FILE="${ROOT}/.env"
+if [[ $# -ge 1 ]]; then
+  if [[ "${1}" = /* ]]; then
+    ENV_FILE="${1}"
+  else
+    ENV_FILE="${ROOT}/${1}"
+  fi
+else
+  ENV_FILE="${ROOT}/.env"
+fi
 
 if [[ ! -f "${ENV_FILE}" ]]; then
   echo "Missing ${ENV_FILE}"
-  echo "Run: cp .env.example .env"
+  if [[ "${ENV_FILE}" == *.production ]]; then
+    echo "Run: cp .env.production.example .env.production"
+  else
+    echo "Run: cp .env.example .env"
+  fi
   exit 1
 fi
 
@@ -39,4 +54,4 @@ upsert_if_empty BETTER_AUTH_SECRET "$(openssl rand -hex 32)"
 upsert_if_empty PRIVATE_SERVER_KEY "$(openssl rand -hex 32)"
 
 echo "Secrets ready in ${ENV_FILE}"
-echo "Do not commit .env"
+echo "Do not commit $(basename "${ENV_FILE}")"

@@ -2,8 +2,8 @@
 # Publishes host ports and adds Mailpit so signup/invite mail is visible
 # at http://localhost:8025 without a real SMTP provider.
 #
-# Production later: do not copy this file to the server. Use the Cloudflare
-# Tunnel overlay documented in docs/SELF_HOST.md instead.
+# Production later: do not copy this file to the server.
+# Use ./scripts/prod-up.sh (docker-compose.yml + docker-compose.prod.yml).
 
 services:
   mailpit:

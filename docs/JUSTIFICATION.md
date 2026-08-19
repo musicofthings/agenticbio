@@ -4,7 +4,12 @@ Hand this to a director at the end of the free webinar. The job of the page is t
 
 **Working title:** Local Agentic Workflows for Clinical and Genomic Data — Budget Justification
 
-Export to PDF before the webinar. Keep to one page.
+Export to PDF before the webinar. Keep to one page. Ready files:
+
+- Printable HTML: [`justification-one-pager.html`](justification-one-pager.html)
+- PDF: [`justification-one-pager.pdf`](justification-one-pager.pdf)
+
+The webinar **date is not set yet**. Fill the `[fill before sending]` line in the HTML header, then Print → Save as PDF (A4). Do not send the PDF until that date is real.
 
 ## Header
 

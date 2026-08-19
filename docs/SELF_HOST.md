@@ -46,31 +46,34 @@ docker exec cio-postgres pg_dump -U postgres classroomio > backup-$(date +%F).sq
 
 ### Google login (optional)
 
-The ClassroomIO login page always shows **Login with Google**. That is not configured until you put a real OAuth Web client in `.env`. Placeholder values (`docker-local-client-id`) produce Google **Error 401: invalid_client**.
+Deferred. Full steps: [`GOOGLE_OAUTH.md`](GOOGLE_OAUTH.md). Until then use email/password. Do not click **Login with Google** — it will 401 until a real client ID is in `deploy/.env`.
 
-Until then, use **email and password** (`admin@agenticbio.local` locally).
+## Production (Cloudflare Tunnel — files ready, not enabled)
 
-To enable Google:
+Local `deploy/docker-compose.override.yml` publishes host ports and Mailpit. Do **not** copy that overlay to a public server. Use:
 
-1. [Google Cloud Console → APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials) → Create credentials → OAuth client ID → **Web application**.
-2. Authorized JavaScript origins:
-   - `http://localhost:3082`
-   - `https://learn.agenticbio.in` (later)
-3. Authorized redirect URIs (Better Auth, dashboard origin):
-   - `http://localhost:3082/api/auth/callback/google`
-   - `https://learn.agenticbio.in/api/auth/callback/google` (later)
-4. Paste into `deploy/.env`:
+- [`../deploy/docker-compose.prod.yml`](../deploy/docker-compose.prod.yml)
+- [`../deploy/.env.production.example`](../deploy/.env.production.example)
 
-```env
-GOOGLE_CLIENT_ID=....apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=....
+```bash
+cd deploy
+cp .env.production.example .env.production
+./scripts/gen-secrets.sh .env.production
+# fill SMTP_*, CLOUDFLARE_TUNNEL_TOKEN, POSTGRES_PASSWORD, MINIO_ROOT_PASSWORD
+./scripts/prod-up.sh
 ```
 
-5. Recreate the API: `cd deploy && docker compose up -d --force-recreate api`
+You still need: Cloudflare nameservers on **`agenticbio.in`**, a Zero Trust tunnel token, real SMTP (`noreply@agenticbio.in` + SPF/DKIM), and the public hostname below. The token is not in this repo. `prod-up.sh` never merges the local override (host ports + Mailpit).
 
-## Production later (not enabled in this repo)
+### Go-live checklist
 
-Local `deploy/docker-compose.override.yml` publishes host ports and Mailpit. Do **not** copy that overlay to a public server.
+1. Point `agenticbio.in` nameservers at Cloudflare.
+2. Create a Zero Trust **token** tunnel. Public hostname `learn.agenticbio.in` → `http://dashboard:3082`. Optional `/media*` → `http://minio:9000`.
+3. Paste the token into `.env.production` as `CLOUDFLARE_TUNNEL_TOKEN`.
+4. Real SMTP + SPF/DKIM for `noreply@agenticbio.in`. Mailpit is local-only.
+5. Change `POSTGRES_PASSWORD` and MinIO keys from the example placeholders.
+6. Google login remains optional — [`GOOGLE_OAUTH.md`](GOOGLE_OAUTH.md) — set the production origin/redirect on the same client, then put the id/secret in `.env.production`.
+7. Do **not** copy `docker-compose.override.yml` to the server. Do **not** put Cloudflare Access OTP in front of learner login.
 
 ### Domain and routing
 
@@ -102,26 +105,17 @@ Do not expose `api`, Postgres, Redis, or MinIO on the host. The dashboard proxie
 
 Replace Mailpit with a real provider (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_SENDER=noreply@agenticbio.in`). Cloudflare Access OTP does **not** send ClassroomIO verification, password-reset, or invite mail. SPFs/DKIM should be on the `agenticbio.in` zone in Cloudflare.
 
-### Cloudflare Tunnel overlay (sketch)
+### Cloudflare Tunnel overlay
 
-Add a service; omit host `ports:` on `api` and `dashboard`:
-
-```yaml
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    restart: unless-stopped
-    command: tunnel --no-autoupdate run
-    environment:
-      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
-```
+The service lives in [`../deploy/docker-compose.prod.yml`](../deploy/docker-compose.prod.yml) (`cloudflare/cloudflared:2026.8.2`, overridable via `CLOUDFLARED_VERSION`). Do not merge it with `docker-compose.override.yml`. Start with [`../deploy/scripts/prod-up.sh`](../deploy/scripts/prod-up.sh).
 
 Zero Trust public hostname:
 
 - Hostname: `learn.agenticbio.in`
 - Service type: HTTP
-- URL: `dashboard:3082`
+- URL: `http://dashboard:3082`
 
-Optional second route for media if you keep MinIO: path `/media` on the same hostname → `http://minio:9000` (or move objects to R2 and set `OBJECT_STORAGE_MEDIA_PUBLIC_BASE_URL` to the R2 public URL).
+Optional second route for media if you keep MinIO: path `/media*` on the same hostname → `http://minio:9000` (or move objects to R2 and set `OBJECT_STORAGE_MEDIA_PUBLIC_BASE_URL` to the R2 public URL).
 
 Do not put Cloudflare Access OTP in front of `learn.agenticbio.in`. That would block new paying students. If you want an extra perimeter, apply Access only to staff surfaces (for example `admin.agenticbio.in`). Learners authenticate with ClassroomIO BetterAuth.
 

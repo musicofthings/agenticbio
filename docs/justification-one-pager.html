@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Local Agentic Workflows for Clinical and Genomic Data — Budget Justification</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "IBM Plex Sans", "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #12202a;
+      font-size: 9.5pt;
+      line-height: 1.28;
+      max-width: 186mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+    h1 { font-size: 14pt; margin: 0 0 2pt; letter-spacing: -0.02em; }
+    .kicker { font-size: 8pt; text-transform: uppercase; letter-spacing: 0.12em; color: #3d6b5c; font-weight: 600; margin-bottom: 4pt; }
+    .meta { font-size: 9pt; color: #334; margin: 0 0 7pt; }
+    h2 { font-size: 10pt; margin: 7pt 0 3pt; color: #1a3d34; }
+    p, li { margin: 0 0 2.5pt; }
+    ul { margin: 0 0 4pt 15pt; padding: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 3pt 0 5pt; font-size: 8.8pt; }
+    th, td { border: 1px solid #c5d4ce; padding: 3pt 5pt; vertical-align: top; text-align: left; }
+    th { background: #e8f1ed; }
+    .ask { background: #e8f1ed; border: 1px solid #b7cfc6; padding: 6pt 8pt; margin-top: 6pt; }
+    .fine { font-size: 7.5pt; color: #556; margin-top: 7pt; }
+    strong { font-weight: 650; }
+  </style>
+</head>
+<body>
+  <div class="kicker">Agentic Bio Labs · Manager justification</div>
+  <h1>Local Agentic Workflows for Clinical and Genomic Data</h1>
+  <p class="meta">
+    <strong>The Agentic Bio Fellowship</strong> · 6–8 weeks, live + labs + recordings ·
+    Cohort 1: bioinformatics / computational biology leads ·
+    Individual Innovator <strong>₹1,50,000</strong> · Enterprise Team (3–5 seats) <strong>₹5,00,000</strong><br>
+    Webinar date: <em>[fill before sending]</em>
+  </p>
+
+  <h2>Problem</h2>
+  <ul>
+    <li>Public LLM APIs are incompatible with genomic, VCF, and protocol data under institutional governance.</li>
+    <li>Static Nextflow/Snakemake pipelines still need constant human babysitting for format drift, failed EDA, and annotation lookups.</li>
+    <li>Sending PHI/omics off-box creates a compliance blocker that stalls “AI adoption” indefinitely.</li>
+  </ul>
+
+  <h2>What the Fellowship deploys (not a lecture)</h2>
+  <ul>
+    <li>Local LLM baseline (Ollama) on team hardware or an air-gapped VM</li>
+    <li>Dockerized Python + R/Bioconductor environments</li>
+    <li>Nextflow DSL2 as the <strong>execution plane</strong> (agents plan; Nextflow runs)</li>
+    <li>Agent loops over files (VCF v4.2 parse / reformat / annotation) with human review gates</li>
+    <li>Recordings + GitHub lab repos the team keeps after the cohort</li>
+  </ul>
+  <p>Enterprise track adds a 60-minute architecture review against <em>our</em> stack (legacy LIMS, HPC, or AWS Batch).</p>
+
+  <h2>Hard ROI this fiscal quarter</h2>
+  <p>Replace the placeholders with the buyer’s own cycle times if they shared them on the webinar.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Lever</th>
+        <th>Mechanism</th>
+        <th>Conservative claim to validate internally</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pipeline turnaround</td>
+        <td>Fewer manual VCF/EDA hand-offs</td>
+        <td>Hours recovered per run × loaded cost of a bioinformatician</td>
+      </tr>
+      <tr>
+        <td>Data residency</td>
+        <td>No clinical/genomic payloads to public model APIs</td>
+        <td>Avoids a cloud-AI DPIA delay that can stall a quarter</td>
+      </tr>
+      <tr>
+        <td>L&amp;D efficiency</td>
+        <td>One team invoice vs 3–5 individual reimbursements</td>
+        <td>₹5L team seat vs 5 × ₹1.5L</td>
+      </tr>
+      <tr>
+        <td>Reuse</td>
+        <td>Labs and Docker/Nextflow baselines stay in their Git</td>
+        <td>Avoids a one-off vendor demo that expires</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Risk controls</h2>
+  <ul>
+    <li>Synthetic VCF and public-domain teaching data in labs; production data never leaves their firewall</li>
+    <li>Human review gates before any write-back to clinical or production pipelines</li>
+    <li>Self-hosted classroom (ClassroomIO) for recordings — not a consumer MOOC</li>
+  </ul>
+
+  <div class="ask">
+    <strong>Ask:</strong> Approve <strong>Enterprise Team License ₹5,00,000</strong> (preferred) or <strong>Individual Innovator ₹1,50,000</strong>.<br>
+    Contact: Agentic Bio Labs — reply to the webinar follow-up or DM <code>ARCHITECTURE</code>.
+  </div>
+
+  <p class="fine">Not a medical device. Not clinical advice. The Fellowship teaches architecture and local orchestration; it does not certify a diagnostic.</p>
+</body>
+</html>

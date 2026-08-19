@@ -22,6 +22,16 @@ python3 parse_vcf.py --vcf data/synthetic.vcf --annot data/annotation.tsv --out 
 
 Optional: run the same script inside the lab 02 image with bind mounts.
 
+## Week 6 — bounded fail / patch
+
+Canonical `data/synthetic.vcf` stays untouched. Run the **broken** copy:
+
+```bash
+python3 parse_vcf.py --vcf data/broken.vcf --annot data/annotation.tsv --out outputs/variants-broken.tsv
+```
+
+The last record is truncated (fewer than 8 columns), so the parser skips it. Propose a patch, get a human yes, write a fixed copy under `outputs/` — do not rewrite `data/synthetic.vcf`. Max three iterations.
+
 ## Acceptance criteria
 
 - [ ] `outputs/variants.tsv` has a header and one row per variant record (not header lines)

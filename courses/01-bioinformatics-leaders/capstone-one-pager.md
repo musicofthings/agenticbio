@@ -14,7 +14,7 @@ Fixture in → agent plan → Nextflow process(es) → TSV/report out → human 
 Which steps are Nextflow processes vs agent-only (read/plan). Name the container image tag.
 
 ## Failure modes
-Two realistic failures (model hallucination of a variant row; Nextflow process non-zero) and the human action.
+Two realistic failures (malformed variant row skipped by the parser; Nextflow process non-zero) and the human action. Week 6 uses `data/broken.vcf` on purpose.
 
 ## What this is not
 Not a medical device. Synthetic data only. No production LIMS write-back.

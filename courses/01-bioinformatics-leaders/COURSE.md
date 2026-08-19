@@ -40,7 +40,7 @@ Live sessions: weekly 90 minutes. Recordings uploaded to the course. Labs are Gi
 | 3 | Nextflow DSL2 as the execution plane | [`labs/03-nextflow-execution-plane`](labs/03-nextflow-execution-plane) |
 | 4 | Agent loops over files (OpenClaw or equivalent) | (uses labs 1–3; no extra stub) |
 | 5 | VCF v4.2 parse / reformat / annotation, on-box | [`labs/04-vcf-local-agent`](labs/04-vcf-local-agent) |
-| 6 | Self-correcting EDA agents with human review gates | extend lab 2 + 4 |
+| 6 | Self-correcting EDA agents with human review gates | lab 4 `data/broken.vcf` |
 | 7–8 | Capstone: one autonomous local pipeline on a synthetic cohort | architecture one-pager |
 
 ---
@@ -111,7 +111,7 @@ No external annotation APIs in the lab. Fixture TSV only.
 ## Module 6 — Self-correcting EDA with human gates
 
 **Lesson 6.1 — Fail, patch, re-run**  
-Agent proposes a pandas or R fix; human approves; container re-runs; max N iterations.
+Agent proposes a pandas or R fix; human approves; container re-runs; max three iterations. Start from `labs/04-vcf-local-agent/data/broken.vcf`.
 
 **Lesson 6.2 — What never auto-merges**  
 Anything that would touch a LIMS, a clinical report, or a production Nextflow `-resume` on real samples.

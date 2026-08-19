@@ -53,7 +53,7 @@ If `cio-jobs` is stopped, the UI still accepts uploads and “send invite,” bu
 |---|---|---|
 | Learner / faculty login | ClassroomIO BetterAuth | Same |
 | Signup, reset, invites | Mailpit at `:8025` | Real SMTP (Resend, Postmark, Zoho) |
-| Edge perimeter | None | Cloudflare Tunnel; Access **staff-only** if used |
+| Edge perimeter | None | Cloudflare Tunnel (`deploy/docker-compose.prod.yml`); Access **staff-only** if used |
 
 Cloudflare Access one-time PIN is **not** ClassroomIO email. Putting Access OTP in front of `learn.agenticbio.in` would block new paying students who are not already on an allowlist. Keep BetterAuth as the LMS login. If Access is added later, attach it to MinIO console or `admin.agenticbio.in`.
 
@@ -66,6 +66,5 @@ Browsers load media from `OBJECT_STORAGE_MEDIA_PUBLIC_BASE_URL`. Locally that is
 ## What this repo does not contain
 
 - The ClassroomIO source monorepo (we pull images)
-- Cloudflare Tunnel token or DNS
+- Cloudflare Tunnel token or DNS (overlay is in `deploy/docker-compose.prod.yml`; start with `./scripts/prod-up.sh`)
 - Payment / checkout
-- Curriculum for cohorts 2–5

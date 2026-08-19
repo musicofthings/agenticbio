@@ -1,4 +1,5 @@
 .env
+.env.production
 mailpit-certs/
 *.sql
 *.sql.gz

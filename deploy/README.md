@@ -47,8 +47,21 @@ curl -I  http://localhost:3082/    # dashboard 200
 
 1. Open http://localhost:3082 and create the first organization account (email/password — Google login is optional and off until you add a real `GOOGLE_CLIENT_ID`; see [`../docs/SELF_HOST.md`](../docs/SELF_HOST.md)).
 2. Confirm the verification email in [Mailpit](http://localhost:8025). Local Mailpit needs dummy SMTP auth (`SMTP_USER=mailpit`) and a STARTTLS cert (`./mailpit-certs`, see compose override). Without that, signup looks successful but verification mail never delivers.
-3. Create the course **The Agentic Bio Fellowship — Bioinformatics & Computational Biology** using [`../courses/01-bioinformatics-leaders/COURSE.md`](../courses/01-bioinformatics-leaders/COURSE.md).
-4. Attach each lab `README.md` as a lesson resource.
+3. Import cohort 1 (creates the course, seven modules, lessons, and assignments):
+
+   ```bash
+   python3 scripts/seed_cohort1.py
+   ```
+
+   Draft JSON: [`../courses/01-bioinformatics-leaders/classroomio-draft.json`](../courses/01-bioinformatics-leaders/classroomio-draft.json). Re-run after editing the draft; the script merges into the existing course. Lab folders stay in git — lesson bodies link to GitHub.
+4. Invite a test fellow and confirm Mailpit:
+
+   ```bash
+   python3 scripts/invite_fellow.py
+   python3 scripts/invite_fellow.py --slug agentic-bio-fellowship-biopharma-ds
+   ```
+
+   Default address `fellow@agenticbio.local` is captured at http://localhost:8025. Use `--skip-mailpit` if Mailpit is not running.
 
 Optional demo seed (ClassroomIO sample org, not Agentic Bio content):
 
@@ -78,6 +91,20 @@ docker exec cio-postgres pg_dump -U postgres classroomio > backup-$(date +%F).sq
 - Browsers should hit the **dashboard** origin. Do not point learners at `:3081`.
 - Pin `CIO_VERSION` in `.env`. Current pin: **1.0.0**. `latest` is a rolling `main` build.
 
-## Production (not this overlay)
+## Production (Cloudflare Tunnel)
 
-Local `docker-compose.override.yml` publishes host ports and Mailpit. Do not ship that file to a public server. See [`../docs/SELF_HOST.md`](../docs/SELF_HOST.md) for Cloudflare Tunnel on **`learn.agenticbio.in`**, SMTP (`noreply@agenticbio.in`), and media URLs.
+Local `docker-compose.override.yml` publishes host ports and Mailpit. Do **not** copy that overlay to a public server.
+
+Production files in this directory:
+
+- [`docker-compose.prod.yml`](docker-compose.prod.yml) — `cloudflared` only; no host ports
+- [`.env.production.example`](.env.production.example) — `learn.agenticbio.in` URLs and SMTP placeholders
+
+```bash
+cp .env.production.example .env.production
+./scripts/gen-secrets.sh .env.production
+# fill SMTP_*, CLOUDFLARE_TUNNEL_TOKEN, and change default passwords
+./scripts/prod-up.sh
+```
+
+`prod-up.sh` uses an explicit `-f` list so `docker-compose.override.yml` is not merged. Do not copy that override to a public server. Point the zone at Cloudflare, create a token tunnel, public hostname `learn.agenticbio.in` → `http://dashboard:3082`. Optional path `/media*` → `http://minio:9000`. Full notes: [`../docs/SELF_HOST.md`](../docs/SELF_HOST.md).

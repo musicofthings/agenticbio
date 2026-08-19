@@ -30,7 +30,12 @@ LAB04_DS = f"{GH}/tree/main/courses/02-biopharma-data-scientists/labs/04-multiom
 LAB04_CLIN = f"{GH}/tree/main/courses/03-clinical-healthcare/labs/04-ethics-packet-local-agent"
 LAB04_RAG = f"{GH}/tree/main/courses/04-rnd-institute-data-scientists/labs/04-manual-rag-local-agent"
 LAB04_GRANT = f"{GH}/tree/main/courses/05-academic-scientists/labs/04-grant-synth-local-agent"
-CAPSTONE = f"{GH}/blob/main/courses/01-bioinformatics-leaders/capstone-one-pager.md"
+CAPSTONE_BIO = f"{GH}/blob/main/courses/01-bioinformatics-leaders/capstone-one-pager.md"
+CAPSTONE_DS = f"{GH}/blob/main/courses/02-biopharma-data-scientists/capstone-one-pager.md"
+CAPSTONE_CLIN = f"{GH}/blob/main/courses/03-clinical-healthcare/capstone-one-pager.md"
+CAPSTONE_RAG = f"{GH}/blob/main/courses/04-rnd-institute-data-scientists/capstone-one-pager.md"
+CAPSTONE_GRANT = f"{GH}/blob/main/courses/05-academic-scientists/capstone-one-pager.md"
+CAPSTONE = CAPSTONE_BIO
 
 COURSES = [
     {
@@ -188,6 +193,234 @@ def nextflow_lab() -> str:
         "<li>You can explain the audit-trail rule in two sentences</li>"
         "</ul>"
     )
+
+
+def image_vs_bind(*, bind_example: str, network_deny: str) -> str:
+    return (
+        "<h3>What belongs in the image</h3>"
+        "<p>Interpreters, pinned libraries, the join/parse/retrieve script if it is "
+        "part of the runtime. Anything a second fellow would need without your "
+        "<code>$HOME</code>.</p>"
+        "<h3>What is bind-mounted</h3>"
+        f"<p>{bind_example}</p>"
+        "<h3>Network</h3>"
+        f"<p>Image <em>build</em> may use a package mirror. Analysis scripts must not "
+        f"call the network. {network_deny}</p>"
+        f"<p>Lab folder: <a href=\"{LAB02}\">labs/02-container-r-python</a>.</p>"
+        + how_live()
+    )
+
+
+def channels_lesson() -> str:
+    return (
+        "<h3>Minimal DSL2</h3>"
+        "<p>Two processes wired by a channel: count lines, then write a summary. "
+        "Use <code>-c nextflow.config</code> so the container image is explicit. "
+        "If the agent cannot see which image tag ran, you do not have an audit trail.</p>"
+        "<p>Channels are the contract between processes. Do not reach into another "
+        "process’s work directory from a side script. That is how “helpful” agents "
+        "destroy <code>-resume</code>.</p>"
+        + nextflow_lab()
+        + how_live()
+    )
+
+
+def tool_map(*, deny: str, gate: str) -> str:
+    return (
+        "<h3>Map tools, deny network</h3>"
+        "<p>On OpenClaw or an equivalent local runtime, map tools to:</p>"
+        "<ul>"
+        "<li><code>list_dir</code></li>"
+        "<li><code>read_file</code></li>"
+        "<li><code>run_nextflow</code></li>"
+        "<li><code>run_container</code></li>"
+        "</ul>"
+        f"<p>Deny network except optional package mirrors you already trust. {deny}</p>"
+        "<h3>Implementation</h3>"
+        f"<p>Paste a short architecture note into the week-4 assignment: tools allowed, "
+        f"tools denied, and where the human gate sits. {gate}</p>"
+        + how_live()
+    )
+
+
+def never_merge(items: list[str]) -> str:
+    lis = "".join(f"<li>{item}</li>" for item in items)
+    return (
+        "<h3>Never auto-merge</h3>"
+        f"<ul>{lis}</ul>"
+        "<p>If the patch would do any of those, the loop ends and a human writes the "
+        "next ticket. Speed is not a reason to skip the gate.</p>"
+        + how_live()
+        + disclaimer()
+    )
+
+
+def week6_broken(*, lab_href: str, command: str, broken: str) -> str:
+    return (
+        "<h3>Fail, patch, re-run</h3>"
+        "<p>The agent proposes a fix. A human approves. The container re-runs. "
+        "Max three iterations, then stop. Do not invent a cloud notebook.</p>"
+        "<h3>This week’s fixture</h3>"
+        f"<p>Use the <strong>broken</strong> copy, not the canonical teaching file. "
+        f"Lab: <a href=\"{lab_href}\">{lab_href.rsplit('/', 1)[-1]}</a>.</p>"
+        f"<pre><code>{command}</code></pre>"
+        f"<p>Expected: the run fails or the output is obviously wrong because "
+        f"<code>{broken}</code> is malformed on purpose. Write a patched copy under "
+        "<code>outputs/</code>. Do <em>not</em> rewrite the canonical fixture in "
+        "<code>data/</code> without an explicit human yes.</p>"
+        "<h3>What “self-correcting” is not</h3>"
+        "<p>Unbounded retries against a production work dir. A bounded loop with a "
+        "human signature on each patch that changes analysis code or inputs.</p>"
+        + how_live()
+    )
+
+
+def _lesson(ext: str, section: str, title: str, order: int) -> dict:
+    return {
+        "externalId": ext,
+        "sectionExternalId": section,
+        "title": title,
+        "order": order,
+        "isUnlocked": True,
+        "public": True,
+    }
+
+
+def _exercise(
+    ext: str,
+    lesson: str,
+    section: str,
+    title: str,
+    description: str,
+    order: int,
+    questions: list[dict],
+) -> dict:
+    return {
+        "externalId": ext,
+        "lessonExternalId": lesson,
+        "sectionExternalId": section,
+        "title": title,
+        "description": description,
+        "order": order,
+        "questions": questions,
+    }
+
+
+EX_LAB02 = _exercise(
+    "ex-lab02",
+    "les-2-1",
+    "sec-m2",
+    "Lab 02 — Image id and summaries",
+    "Paste the docker build image id and upload both output files from labs/02-container-r-python.",
+    2,
+    [
+        {
+            "question": "Paste the docker build image id (sha256:…).",
+            "questionTypeId": 5,
+            "points": 5,
+            "order": 0,
+        },
+        {
+            "question": "Upload outputs/python_summary.txt and outputs/r_summary.txt.",
+            "questionTypeId": 8,
+            "points": 10,
+            "order": 1,
+        },
+    ],
+)
+EX_LAB03 = _exercise(
+    "ex-lab03",
+    "les-3-2",
+    "sec-m3",
+    "Lab 03 — Nextflow audit trail",
+    "Attach results/summary.txt and a 5-line comment on why the agent must not docker run analysis steps behind Nextflow’s back.",
+    2,
+    [
+        {
+            "question": "Upload results/summary.txt.",
+            "questionTypeId": 8,
+            "points": 10,
+            "order": 0,
+        },
+        {
+            "question": "In five lines: why must the agent not docker run analysis steps behind Nextflow’s back?",
+            "questionTypeId": 3,
+            "points": 10,
+            "order": 1,
+        },
+    ],
+)
+EX_WEEK4 = _exercise(
+    "ex-week4",
+    "les-4-2",
+    "sec-m4",
+    "Week 4 — Tool map",
+    "List tools allowed (list_dir, read_file, run_nextflow, run_container) and tools denied (general bash, network except trusted mirrors). Say where the human gate sits.",
+    2,
+    [
+        {
+            "question": "Paste your tool map: allowed, denied, and the human-gate rule.",
+            "questionTypeId": 3,
+            "points": 10,
+            "order": 0,
+        }
+    ],
+)
+
+SPINE_EXTRAS: dict[str, dict] = {
+    "agentic-bio-fellowship-biopharma-ds": {
+        "lessons": [
+            _lesson("les-2-2", "sec-m2", "2.2 — What belongs in the image vs bind-mounted assays", 1),
+            _lesson("les-3-2", "sec-m3", "3.2 — Channels, processes, containers", 1),
+            _lesson("les-4-2", "sec-m4", "4.2 — OpenClaw (or equivalent) on local tools", 1),
+            _lesson("les-6-2", "sec-m6", "6.2 — What never auto-merges", 1),
+        ],
+        "exercises": [EX_LAB02, EX_LAB03, EX_WEEK4],
+    },
+    "agentic-bio-fellowship-clinical": {
+        "lessons": [
+            _lesson("les-2-2", "sec-m2", "2.2 — What belongs in the image vs bind-mounted packets", 1),
+            _lesson("les-3-2", "sec-m3", "3.2 — Channels, processes, containers", 1),
+            _lesson("les-4-2", "sec-m4", "4.2 — OpenClaw (or equivalent) on local tools", 1),
+            _lesson("les-6-2", "sec-m6", "6.2 — What never auto-files", 1),
+        ],
+        "exercises": [EX_LAB02, EX_LAB03, EX_WEEK4],
+    },
+    "agentic-bio-fellowship-rnd-rag": {
+        "lessons": [
+            _lesson("les-2-2", "sec-m2", "2.2 — What belongs in the image vs bind-mounted manuals", 1),
+            _lesson("les-3-2", "sec-m3", "3.2 — Channels, processes, containers", 1),
+            _lesson("les-4-2", "sec-m4", "4.2 — OpenClaw (or equivalent) on local tools", 1),
+            _lesson("les-6-2", "sec-m6", "6.2 — What never auto-merges into a live SOP", 1),
+        ],
+        "exercises": [EX_LAB02, EX_LAB03, EX_WEEK4],
+    },
+    "agentic-bio-fellowship-academic-grants": {
+        "lessons": [
+            _lesson("les-2-2", "sec-m2", "2.2 — What belongs in the image vs bind-mounted notes", 1),
+            _lesson("les-3-2", "sec-m3", "3.2 — Channels, processes, containers", 1),
+            _lesson("les-4-2", "sec-m4", "4.2 — OpenClaw (or equivalent) on local tools", 1),
+            _lesson("les-6-2", "sec-m6", "6.2 — What never auto-submits", 1),
+        ],
+        "exercises": [EX_LAB02, EX_LAB03, EX_WEEK4],
+    },
+}
+
+
+def ensure_spine(draft: dict, slug: str) -> None:
+    extras = SPINE_EXTRAS.get(slug)
+    if not extras:
+        return
+    have = {item["externalId"] for item in draft.get("lessons") or []}
+    for lesson in extras["lessons"]:
+        if lesson["externalId"] not in have:
+            draft.setdefault("lessons", []).append(dict(lesson))
+    have_ex = {item["externalId"] for item in draft.get("exercises") or []}
+    draft.setdefault("exercises", [])
+    for exercise in extras["exercises"]:
+        if exercise["externalId"] not in have_ex:
+            draft["exercises"].append(json.loads(json.dumps(exercise)))
+    draft["lessons"].sort(key=lambda item: (item["sectionExternalId"], item["order"]))
 
 
 def body_bio() -> dict[str, str]:
@@ -369,15 +602,14 @@ def body_bio() -> dict[str, str]:
             + how_live()
         ),
         "les-6-1": (
-            "<h3>Fail, patch, re-run</h3>"
-            "<p>The agent proposes a pandas or R fix. A human approves. The container "
-            "re-runs. Max N iterations, then stop. Extend lab 2 (the image) and lab 4 "
-            "(the TSV). Do not invent a new cloud notebook.</p>"
-            "<h3>What “self-correcting” is not</h3>"
-            "<p>It is not unbounded retries against a production Nextflow work dir. It is "
-            "a bounded loop with a human signature on each patch that changes analysis "
-            "code. If you cannot point at the yes, the patch did not happen.</p>"
-            + how_live()
+            week6_broken(
+                lab_href=LAB04_BIO,
+                command=(
+                    "python3 parse_vcf.py --vcf data/broken.vcf "
+                    "--annot data/annotation.tsv --out outputs/variants-broken.tsv"
+                ),
+                broken="data/broken.vcf",
+            )
         ),
         "les-6-2": (
             "<h3>Never auto-merge</h3>"
@@ -468,6 +700,14 @@ def body_ds() -> dict[str, str]:
             + docker_lab()
             + how_live()
         ),
+        "les-2-2": image_vs_bind(
+            bind_example=(
+                "Input matrices and outputs. Do not bake licensed assay exports into "
+                "the image. This track’s teaching table is "
+                "<code>data/expression.tsv</code> (synthetic)."
+            ),
+            network_deny="No Enrichr, no STRING, no “just this once” REST annotation.",
+        ),
         "les-3-1": (
             "<h3>The audit-trail rule</h3>"
             "<p>The workflow file is the audit trail for a discovery pipeline, not a "
@@ -477,6 +717,7 @@ def body_ds() -> dict[str, str]:
             + nextflow_lab()
             + how_live()
         ),
+        "les-3-2": channels_lesson(),
         "les-4-1": (
             "<h3>File in → plan → execute → file out → critic</h3>"
             "<p>Map tools to <code>list_dir</code>, <code>read_file</code>, "
@@ -486,6 +727,11 @@ def body_ds() -> dict[str, str]:
             "<p>Chat is for planning. Files are for evidence. If the only record of a "
             "join is a paste from a chatbot, you do not have a discovery pipeline.</p>"
             + how_live()
+        ),
+        "les-4-2": tool_map(
+            deny="Do not give the agent a general <code>bash</code> tool that can "
+            "<code>curl</code> Enrichr.",
+            gate="The gate sits before any rewrite of a matrix or a board deck.",
         ),
         "les-5-1": (
             "<h3>A matrix is a contract</h3>"
@@ -514,21 +760,32 @@ def body_ds() -> dict[str, str]:
             "</ul>"
             + how_live()
         ),
-        "les-6-1": (
-            "<h3>Bounded loop</h3>"
-            "<p>The agent proposes a pandas or R fix. A human approves. The container "
-            "re-runs. Max N iterations, then stop. Never auto-merge into a LIMS, a board "
-            "deck with real sample IDs, or a production Nextflow <code>-resume</code> on "
-            "licensed assays.</p>"
-            + how_live()
+        "les-6-1": week6_broken(
+            lab_href=LAB04_DS,
+            command=(
+                "python3 join_matrix.py --expr data/broken-expression.tsv "
+                "--annot data/annotation.tsv --out outputs/joined-broken.tsv"
+            ),
+            broken="data/broken-expression.tsv",
+        ),
+        "les-6-2": never_merge(
+            [
+                "A LIMS write-back",
+                "A board deck with real sample IDs",
+                "A production Nextflow <code>-resume</code> on licensed assays",
+                "Rewrites of the canonical <code>expression.tsv</code>",
+            ]
         ),
         "les-7-1": (
             "<h3>Deliverable</h3>"
             "<p>One local pipeline on the synthetic matrix in lab 4. Ollama (or stub) "
             "drafts a run plan. Nextflow executes containerized join + summary. A human "
-            "signs the architecture one-pager (reuse the cohort 1 template; swap VCF "
-            "language for matrix).</p>"
-            f"<p>Template: <a href=\"{CAPSTONE}\">capstone-one-pager.md</a>.</p>"
+            "signs the architecture one-pager.</p>"
+            f"<p>Template: <a href=\"{CAPSTONE_DS}\">capstone-one-pager.md</a> "
+            "(discovery / matrix language, not VCF).</p>"
+            "<h3>Enterprise extra</h3>"
+            "<p>60-minute architecture review of their data lake, GxP zone, or HPC vs "
+            "this pattern. Scheduled outside the LMS after week 3.</p>"
             + disclaimer()
         ),
     }
@@ -578,6 +835,13 @@ def body_clin() -> dict[str, str]:
             + docker_lab()
             + how_live()
         ),
+        "les-2-2": image_vs_bind(
+            bind_example=(
+                "Packet fixtures and outputs. Do not bake live IEC packets or identifiable "
+                "notes into the image. Teaching files are the synthetic checklist and cover."
+            ),
+            network_deny="No cloud protocol copilots. No “just this once” paste into a vendor scribe.",
+        ),
         "les-3-1": (
             "<h3>Audit trail</h3>"
             "<p>The workflow file is the audit trail for document assembly, not a chat "
@@ -586,6 +850,7 @@ def body_clin() -> dict[str, str]:
             + nextflow_lab()
             + how_live()
         ),
+        "les-3-2": channels_lesson(),
         "les-4-1": (
             "<h3>Human gate before filing</h3>"
             "<p>Map tools to <code>list_dir</code>, <code>read_file</code>, "
@@ -594,6 +859,11 @@ def body_clin() -> dict[str, str]:
             "<p>The agent may list gaps. It may not invent CVs, insurance text, or "
             "signatures. Filing is a human act.</p>"
             + how_live()
+        ),
+        "les-4-2": tool_map(
+            deny="Do not give the agent a general <code>bash</code> tool that can "
+            "upload to an IEC portal.",
+            gate="The gate sits before anything that would look like a filing.",
         ),
         "les-5-1": (
             "<h3>A packet is a contract</h3>"
@@ -618,19 +888,32 @@ def body_clin() -> dict[str, str]:
             "</ul>"
             + how_live()
         ),
-        "les-6-1": (
-            "<h3>Bounded loop</h3>"
-            "<p>Agent proposes a checklist fix; human approves; container re-runs; max N "
-            "iterations. Never auto-file to an IEC portal, EHR, or PACS. If the next "
-            "step would look like a submission, the loop ends.</p>"
-            + how_live()
+        "les-6-1": week6_broken(
+            lab_href=LAB04_CLIN,
+            command=(
+                "python3 extract_packet.py --checklist data/broken-iec-checklist.md "
+                "--cover data/synthetic-protocol-admin.md --out outputs/packet-index-broken.md"
+            ),
+            broken="data/broken-iec-checklist.md",
+        ),
+        "les-6-2": never_merge(
+            [
+                "An IEC / IRB portal submit",
+                "An EHR or PACS write",
+                "Invented CVs, insurance certificates, or signatures",
+                "Rewrites of the canonical checklist without a human yes",
+            ]
         ),
         "les-7-1": (
             "<h3>Deliverable</h3>"
             "<p>One local pipeline on the synthetic packet. Ollama (or stub) drafts a run "
             "plan; Nextflow executes containerized extract; a human signs the architecture "
-            "one-pager (reuse the cohort 1 template; swap VCF language for packet).</p>"
-            f"<p>Template: <a href=\"{CAPSTONE}\">capstone-one-pager.md</a>.</p>"
+            "one-pager.</p>"
+            f"<p>Template: <a href=\"{CAPSTONE_CLIN}\">capstone-one-pager.md</a> "
+            "(packet language, not VCF). Not a medical device. Not diagnosis.</p>"
+            "<h3>Enterprise extra</h3>"
+            "<p>60-minute architecture review of their HIS/LIS vs this pattern. "
+            "Scheduled outside the LMS after week 3.</p>"
             + disclaimer()
         ),
     }
@@ -675,6 +958,13 @@ def body_rag() -> dict[str, str]:
             + docker_lab()
             + how_live()
         ),
+        "les-2-2": image_vs_bind(
+            bind_example=(
+                "The markdown corpus and query file. Do not bake a real institute SOP "
+                "dump into the image. Teaching manuals are the synthetic ops notes."
+            ),
+            network_deny="No OpenAI embeddings, no hosted vector database, no vendor RAG upload.",
+        ),
         "les-3-1": (
             "<h3>Audit trail</h3>"
             "<p>The workflow file records which corpus was searched. Chat is not a "
@@ -683,6 +973,7 @@ def body_rag() -> dict[str, str]:
             + nextflow_lab()
             + how_live()
         ),
+        "les-3-2": channels_lesson(),
         "les-4-1": (
             "<h3>Cite the path</h3>"
             "<p>File in → retrieve → file out → critic. Human gate before write-back "
@@ -690,6 +981,11 @@ def body_rag() -> dict[str, str]:
             "A generated paragraph that cannot point at a source file is not a hit; "
             "it is a hallucination with formatting.</p>"
             + how_live()
+        ),
+        "les-4-2": tool_map(
+            deny="Do not give the agent a general <code>bash</code> tool that can "
+            "upload manuals to a vendor.",
+            gate="The gate sits before any write-back into the live SOP tree.",
         ),
         "les-5-1": (
             "<h3>A corpus is a contract</h3>"
@@ -714,18 +1010,28 @@ def body_rag() -> dict[str, str]:
             "</ul>"
             + how_live()
         ),
-        "les-6-1": (
-            "<h3>Bounded loop</h3>"
-            "<p>Agent proposes a query rewrite; human approves; container re-runs. "
-            "Never auto-merge a generated paragraph into the live manual. A wrong "
-            "cite stops the loop.</p>"
-            + how_live()
+        "les-6-1": week6_broken(
+            lab_href=LAB04_RAG,
+            command=(
+                "python3 retrieve.py --corpus data/manuals --query data/broken-query.txt "
+                "--out outputs/hits-broken.md --k 3"
+            ),
+            broken="data/broken-query.txt",
+        ),
+        "les-6-2": never_merge(
+            [
+                "A generated paragraph merged into a live SOP",
+                "Uploading the corpus to a vendor RAG",
+                "Renaming a production run folder from chat",
+                "Rewrites of the canonical manuals without a human yes",
+            ]
         ),
         "les-7-1": (
             "<h3>Deliverable</h3>"
-            "<p>One local pipeline on the synthetic corpus. Reuse the cohort 1 "
-            "architecture one-pager; swap VCF language for manual corpus.</p>"
-            f"<p>Template: <a href=\"{CAPSTONE}\">capstone-one-pager.md</a>.</p>"
+            "<p>One local pipeline on the synthetic corpus. A human signs the "
+            "architecture one-pager.</p>"
+            f"<p>Template: <a href=\"{CAPSTONE_RAG}\">capstone-one-pager.md</a> "
+            "(manual corpus language, not VCF).</p>"
             + disclaimer()
         ),
     }
@@ -769,6 +1075,13 @@ def body_grant() -> dict[str, str]:
             + docker_lab()
             + how_live()
         ),
+        "les-2-2": image_vs_bind(
+            bind_example=(
+                "Teaching abstracts and the outline template. Do not bake unpublished "
+                "manuscripts into the image."
+            ),
+            network_deny="No cloud writer. No paste of unpublished text to a public model API.",
+        ),
         "les-3-1": (
             "<h3>Audit trail</h3>"
             "<p>The workflow file records which abstract files were read. Chat is not "
@@ -777,12 +1090,18 @@ def body_grant() -> dict[str, str]:
             + nextflow_lab()
             + how_live()
         ),
+        "les-3-2": channels_lesson(),
         "les-4-1": (
             "<h3>Human gate before the portal</h3>"
             "<p>File in → synthesize → file out → critic. Never auto-submit to an "
             "agency portal. Deny network except trusted package mirrors. Paste is a "
             "human act, even when the outline looks finished.</p>"
             + how_live()
+        ),
+        "les-4-2": tool_map(
+            deny="Do not give the agent a general <code>bash</code> tool that can "
+            "paste into an agency portal.",
+            gate="The gate sits before any portal paste.",
         ),
         "les-5-1": (
             "<h3>Abstracts as a contract</h3>"
@@ -809,18 +1128,28 @@ def body_grant() -> dict[str, str]:
             "</ul>"
             + how_live()
         ),
-        "les-6-1": (
-            "<h3>Bounded loop</h3>"
-            "<p>Agent proposes a section rewrite; human approves; container re-runs. "
-            "Never auto-submit. If the next step is a portal paste, the loop ends.</p>"
-            + how_live()
+        "les-6-1": week6_broken(
+            lab_href=LAB04_GRANT,
+            command=(
+                "python3 synthesize.py --abstracts data/broken-abstracts "
+                "--template data/bioe3-outline.md --out outputs/grant-outline-broken.md"
+            ),
+            broken="data/broken-abstracts/broken-abs.md",
+        ),
+        "les-6-2": never_merge(
+            [
+                "An agency portal submit",
+                "A paste of unpublished manuscript text to a cloud writer",
+                "Invented budget lines or reviewer names",
+                "Rewrites of the canonical abstracts without a human yes",
+            ]
         ),
         "les-7-1": (
             "<h3>Deliverable</h3>"
-            "<p>One local pipeline on the synthetic abstracts. Reuse the cohort 1 "
-            "architecture one-pager; swap VCF language for grant outline. The "
-            "Fellowship does not file grants.</p>"
-            f"<p>Template: <a href=\"{CAPSTONE}\">capstone-one-pager.md</a>.</p>"
+            "<p>One local pipeline on the synthetic abstracts. A human signs the "
+            "architecture one-pager. The Fellowship does not file grants.</p>"
+            f"<p>Template: <a href=\"{CAPSTONE_GRANT}\">capstone-one-pager.md</a> "
+            "(grant-outline language, not VCF).</p>"
             + disclaimer()
         ),
     }
@@ -893,6 +1222,7 @@ def assemble_content(
 
 def enrich_draft(path: Path, slug: str, slot_prefix: str) -> dict:
     draft = json.loads(path.read_text())
+    ensure_spine(draft, slug)
     for lesson in draft["lessons"]:
         lesson["isUnlocked"] = True
         lesson["public"] = True

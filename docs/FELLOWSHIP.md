@@ -23,11 +23,11 @@ Launch one track at a time. Shared technical core (local LLM, containers, Nextfl
 
 | # | Cohort | Hook | Status |
 |---|---|---|---|
-| 1 | Bioinformatics & Computational Biology Leaders | Supercharging biological data orchestration with agentic frameworks | **Shipping now** — see [`../courses/01-bioinformatics-leaders/COURSE.md`](../courses/01-bioinformatics-leaders/COURSE.md) |
-| 2 | Data Scientist Teams at Biopharma | Offline AI for discovery and multiomic analysis behind the firewall | Not started |
-| 3 | Clinical & Healthcare (MDs, nursing, radiology, pathology) | Reclaim clinical hours; protocol and ethics-committee documentation | Not started |
-| 4 | Data Scientists in R&D institutes | RAG over lab manuals and historical research stores | Not started |
-| 5 | Academic scientists (ICMR, CSIR, DBT) | Literature synthesis and grant structuring (e.g. BioE3) | Not started |
+| 1 | Bioinformatics & Computational Biology Leaders | Supercharging biological data orchestration with agentic frameworks | **In LMS** — [`../courses/01-bioinformatics-leaders/COURSE.md`](../courses/01-bioinformatics-leaders/COURSE.md) |
+| 2 | Data Scientist Teams at Biopharma | Offline AI for discovery and multiomic analysis behind the firewall | **Labs + LMS draft** — [`../courses/02-biopharma-data-scientists/COURSE.md`](../courses/02-biopharma-data-scientists/COURSE.md) |
+| 3 | Clinical & Healthcare (MDs, nursing, radiology, pathology) | Reclaim clinical hours; protocol and ethics-committee documentation | **Labs + LMS draft** — [`../courses/03-clinical-healthcare/COURSE.md`](../courses/03-clinical-healthcare/COURSE.md) |
+| 4 | Data Scientists in R&D institutes | RAG over lab manuals and historical research stores | **Labs + LMS draft** — [`../courses/04-rnd-institute-data-scientists/COURSE.md`](../courses/04-rnd-institute-data-scientists/COURSE.md) |
+| 5 | Academic scientists (ICMR, CSIR, DBT) | Literature synthesis and grant structuring (e.g. BioE3) | **Labs + LMS draft** — [`../courses/05-academic-scientists/COURSE.md`](../courses/05-academic-scientists/COURSE.md) |
 
 ## Backend funnel (after the Fellowship)
 

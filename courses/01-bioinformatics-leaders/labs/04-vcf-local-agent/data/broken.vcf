@@ -1,0 +1,10 @@
+##fileformat=VCFv4.2
+##fileDate=20260815
+##source=AgenticBioClassroomSyntheticFixture
+##reference=GRCh38_synthetic_placeholder
+##INFO=<ID=NS,Number=1,Type=Integer,Description="Number of samples with data">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SYNTH-001	SYNTH-002
+chr1	10001	SYNTH_VAR_1	A	G	99	PASS	NS=2	GT	0/1	0/0
+chr1	10042	SYNTH_VAR_2	C	T	80	PASS	NS=2	GT	0/0	0/1
+chr2	20010	SYNTH_VAR_3	G	A
